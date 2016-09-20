@@ -121,7 +121,7 @@ docker build -t mesosphere/vny .
 docker run -p 8080:80 mesosphere/vny
 ```
 
-1. Let's add both of these files to the git index and push them up to Docker Hub:
+1. Let's add both of these files to the git index and push them up to GitHub:
 
 ```
 git add index.html
@@ -134,7 +134,7 @@ git push origin master
 
 Let's set up some continuous integration for this application! What we're going to do is set up a Jenkins build using the new [Pipeline](https://jenkins.io/doc/pipeline/) functionality that's part of Jenkins 2.0. This build will build the container and push it to Docker Hub for us.
 
-1. A core part of Pipeline is allowing you to script your builds and check these in with your code. The very first thing we'll do is create a `Jenkinsfile` in the root of your repository. Paste the following into it. Make sure to replace the `mesosphere/vny` with your Docker Hub repository, and `dockerhub-mesosphere` with the name of your Docker Hub credentials:
+1. A core part of Pipeline is allowing you to script your builds and check these in with your code. The very first thing we'll do is create a `Jenkinsfile` in the root of your repository. Paste the following into it. *Make sure to replace the `mesosphere/vny` with your Docker Hub repository, and `dockerhub-mesosphere` with the name of your Docker Hub credentials!*
 
 ```
 def gitCommit() {
@@ -163,8 +163,8 @@ node {
             usernameVariable: 'DOCKERHUB_USERNAME'
         ]]
     ) {
-        sh "docker login -u ${env.DOCKERHUB_USERNAME} -p ${env.DOCKERHUB_PASSWORD} -e demo@mesosphere.com"
-        sh "docker push mesosphere/vny:${gitCommit()}"
+        sh "docker login -u ${env.DOCKERHUB_USERNAME} -p ${env.DOCKERHUB_PASSWORD}"
+        sh "docker push $DOCKERHUB_USERNAME/vny:${gitCommit()}"
     }
 }
 ```
