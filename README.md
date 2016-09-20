@@ -180,15 +180,15 @@ git push origin master
 
 1. Next, we'll create the pipeline job in Jenkins itself. Navigate to the Jenkins UI and click on New Item. We'll create a new "Pipeline" job. Be sure to pick a more descriptive name, e.g. `nginx-mesosphere`:
 
-![Create New Item](new-item.png)
+![Create New Item](/img/new-item.png)
 
 1. For this simple example, we'll just select "Poll SCM" and set the schedule to `* * * * *`. This asks us to poll every minute, which might be inefficient for large installations:
 
-![Poll SCM](poll-scm.png)
+![Poll SCM](/img/poll-scm.png)
 
 1. Next, change the Pipeline definition to use "Pipeline script from SCM" and configure the repository you created earlier (e.g. `https://github.com/mesosphere/vny.git`):
 
-![Pipeline Configuration](pipeline.png)
+![Pipeline Configuration](/img/pipeline.png)
 
 1. Hit save. You should see the Pipeline trigger within a minute. After it triggers, a build agent will be spun up dynamically on the DC/OS cluster and the build will run there.
 
