@@ -327,3 +327,9 @@ If you're stuck, check the following:
 + Are you using the right credentials? Have you saved your credentials in Jenkins correctly?
 
 + Wait a little. Build executors on Mesos can sometimes take a few minutes to spin up, particularly if there is resource contention.
+
+# Next Steps
+
++ Check out [the DC/OS documentation](https://dcos.io/docs/).
+
++ Get help by asking [the DC/OS Community](https://dcos.io/community/).
